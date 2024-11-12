@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Upload page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Your CSS styles inline or link -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            height: 100vh;
+        }
+
+        body {
+            min-height: 100%;
+            background-color: #2C2C2C;
+            display: flex;
+        }
+
+        .section {
+            height: 100%;
+        }
+
+        .content {
+            color: white;
+            width: 100%;
+            /* height: 600px; */
+            overflow: hidden;
+            margin-left: -13.5rem;
+            background: linear-gradient(#212121, #212121) padding-box,
+                linear-gradient(145deg, transparent 35%, #0d6efd, #40c9ff) border-box;
+            border: 2px solid transparent;
+            background-size: 200% 100%;
+            animation: gradient 5s ease infinite;
+
+        }
+
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+
+        form h5,
+        input,
+        p,
+        span,
+        label {
+            color: white;
+            display: flex;
+        }
+
+        h1 {
+            color: deepskyblue;
+        }
+
+
+        .transparentImg {
+            position: absolute;
+            width: 50%;
+        }
+
+        .transparentImg img {
+            width: 45rem;
+            position: absolute;
+            left: -8rem;
+            top: -22rem;
+            opacity: 0.2;
+        }
+
+
+        .logo_img {
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            background-image: url(./Assest/sapiens.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin-right: 10px;
+        }
+
+        label {
+            background-color: indigo;
+            color: white;
+            padding: 0.5rem;
+            font-family: sans-serif;
+            border-radius: 0.3rem;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        input[type=file] {
+            width: 350px;
+            max-width: 100%;
+            color: #444;
+            padding: 2px;
+            background: transparent;
+
+        }
+
+        input[type=file]::file-selector-button {
+            margin-right: 20px;
+            border: none;
+            background: #084cdf;
+            padding: 10px 20px;
+            border-radius: 8px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        input[type=file]::file-selector-button:hover {
+            background: #0d45a5;
+        }
+
+        .drop-container {
+            background-color: transparent;
+            position: relative;
+            display: flex;
+            gap: 10px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            padding: 30px;
+            border-radius: 10px;
+            border: 2px dashed #555;
+            color: #444;
+            cursor: pointer;
+            transition: background .2s ease-in-out, border .2s ease-in-out;
+        }
+
+        .drop-container:hover .drop-title {
+            color: #222;
+        }
+
+        .drop-title {
+            color: #444;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            transition: color .2s ease-in-out;
+        }
+
+        .paratext,
+        .spantext {
+            font-size: 13px;
+        }
+
+        .spantext {
+            margin-top: 8px;
+        }
+
+        .choosefile {
+            background-color: #0a58ca;
+            padding: 10px;
+            font-size: 12px;
+            border-radius: 4px;
+            color: white;
+        }
+
+        .input-group-text {
+            background-color: #0a58ca;
+            color: white;
+            border: none;
+        }
+
+        .tabButton {
+            padding: 0.5em 0.5em;
+            border: 2px solid #0a58ca;
+            position: relative;
+            overflow: hidden;
+            background-color: transparent;
+            text-align: center;
+            font-size: 16px;
+            transition: .3s;
+            z-index: 1;
+            font-family: inherit;
+            color: white;
+            border-radius: 25px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            width: 28%;
+            margin-left: 30%;
+        }
+
+
+        .tabButton::before {
+            content: '';
+            width: 0;
+            height: 400%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+            background-color: #0a58ca;
+            transition: .5s ease;
+            display: block;
+            z-index: -1;
+        }
+
+        .tabButton:hover::before {
+            width: 105%;
+        }
+
+        .tabButton:hover {
+            color: white;
+
+        }
+
+        .btn {
+            width: 40%;
+            /* margin-left: 5rem; */
+        }
+
+        #file1{
+            display: flex;
+    flex-direction: column;
+    align-items: center;
+        }
+
+        #file2{
+            display: flex;
+    flex-direction: column;
+    align-items: center;
+        }
+
+        @media (max-width:992px) {
+            .content {
+                margin-left: 0;
+                margin: auto;
+            }
+
+            .transparentImg img {
+                /* left: 0;
+          top: 0; */
+                width: 0;
+            }
+
+            #text1 p,
+            #text2 p {
+                display: none;
+            }
+
+            #text1 button {
+                width: 108px !important;
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container py-5">
+
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12   col-lg-4">
+                <div class="transparentImg">
+                    <img src="./Assest/sapiens2.png" alt="">
+                </div>
+            </div>
+            <div class="col-12  col-lg-8 ">
+                <div class="card content d-flex flex-column justify-content-center" style="border-radius: 1rem;">
+                    <div class="row" id="tab1">
+                        <div
+                            class="col-lg-5 d-flex flex-column align-items-center justify-content-center leftside p-4 gap-1">
+                            <div id="file1">
+                                <h3>Lorem</h3>
+                                <p>Lorem ipsum dolor, sit amet consectetur </p>
+                                <div class="w-100 d-flex">
+                                    <div class="input-group flex-nowrap mb-3  justify-content-center ">
+                                        <label class="drop-container ">
+                                            <span class="input-group-text mt-2" id="addon-wrapping"><i
+                                                    class="fa fa-folder-open"></i> </span>
+                                            <span class="spantext">Select File Herre</span>
+                                            <p class="paratext">File <span class="mx-1"
+                                                    id="filename">Supported(.xlsx)</span></p>
+                                            <input type="file" accept=".xlsx" id="images" hidden>
+                                            <p class="choosefile">Choose File</p>
+                                        </label>
+                                    </div>
+                                </div>
+                                <button class=" btn btn-outline-primary  text-white ">Upload</button>
+                            </div>
+                            <div class="p-4" id="text1" style="display: none;">
+                                <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                    Doloremque, tenetur.</p>
+                                <button class="tabButton mt-5 w-50" type="button"
+                                    onclick="getfile('tab1')">Tab1</button>
+                            </div>
+                        </div>
+                        <div class="col-lg-7 d-flex flex-column justify-content-center p-4">
+                            <div id="text2" class="">
+                                <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                    Doloremque, tenetur.</p>
+                                <button class="tabButton mt-5" type="button" onclick="getfile('tab2')">Tab2</button>
+                            </div>
+                            <div class="" id="file2" style="display:none;">
+                                <h3>Lorem</h3>
+                                <p>Lorem ipsum dolor, sit amet consectetur </p>
+                                <div class="w-100 d-flex">
+                                    <div class="input-group  mb-3  justify-content-center ">
+
+                                        <label class="drop-container">
+                                            <span class="input-group-text mt-2" id="addon-wrapping2"><i
+                                                    class="fa fa-folder-open"></i> </span>
+                                            <span class="spantext">Select File Herre</span>
+                                            <p class="paratext">File <span class="mx-1"
+                                                    id="filename2">Supported(.xlsx)</span></p>
+                                            <input type="file" accept=".xlsx" id="images2" hidden>
+                                            <p class="choosefile">Choose File</p>
+                                        </label>
+
+                                        <!-- <button class=" btn btn-outline-primary  text-white  mt-3">Upload</button> -->
+                                    </div>
+                                    <div class="input-group  mb-3  justify-content-center ">
+
+                                        <label class="drop-container">
+                                            <span class="input-group-text mt-2" id="addon-wrapping3"><i
+                                                    class="fa fa-folder-open"></i> </span>
+                                            <span class="spantext">Select File Herre</span>
+                                            <p class="paratext">File <span class="mx-1"
+                                                    id="filename3">Supported(.xlsx)</span></p>
+                                            <input type="file" accept=".xlsx" id="images3" hidden>
+                                            <p class="choosefile">Choose File</p>
+                                        </label>
+
+
+                                    </div>
+                                </div>
+                                <button class=" btn btn-outline-primary  text-white  mt-3" >Upload</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        //code to show filename with specific length
+        $("#images").change(function () {
+            var fileName = $(this).val().split('\\').pop();
+            if (fileName.length > 12) {
+                fileName = fileName.substring(0, 12) + "..."; // Truncate file name if it's longer than 15 characters
+            }
+            $("#filename").html(": " + fileName);
+        });
+        $("#images2").change(function () {
+            var fileName = $(this).val().split('\\').pop();
+            if (fileName.length > 12) {
+                fileName = fileName.substring(0, 12) + "..."; // Truncate file name if it's longer than 15 characters
+            }
+            $("#filename2").html(": " + fileName);
+        })
+        $("#images3").change(function () {
+            var fileName = $(this).val().split('\\').pop();
+            if (fileName.length > 12) {
+                fileName = fileName.substring(0, 12) + "..."; // Truncate file name if it's longer than 15 characters
+            }
+            $("#filename3").html(": " + fileName);
+        })
+
+
+
+        function getfile(tab) {
+            if (tab == "tab2") {
+                $("#file1").fadeOut(500, function () {
+                    $("#file2").fadeIn(500);
+                });
+                // Fade out text1 and fade in text2
+                $("#text2").fadeOut(500).delay(500).queue(function () {
+                    $("#text1").fadeIn(500);
+                    $(this).dequeue();
+                });
+            } else {
+                // Slide up file2 and fade in file1
+                $("#file2").fadeOut(500, function () {
+                    $("#file1").fadeIn(500);
+                });
+                // Fade out text1 and fade in text2
+                $("#text1").fadeOut(500).delay(500).queue(function () {
+                    $("#text2").fadeIn(500);
+                    $(this).dequeue();
+                });
+            }
+        }
+    </script>
+</body>
+
+</html>
